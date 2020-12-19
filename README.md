@@ -51,7 +51,7 @@ Now that is out of the way, let's talk about what(on earth!) presents this detec
 
 It should be pretty evident by now that to implement Module Stomping, we need to load a DLL in-memory using one way or the other either by utilizing the Windows loader or by implementing our own loader.
 
-The author of Cobalt Strike decided to go for the latter option because it's a sensible choice, operationally-reliable, avoids a missing PEB loaded image IoC out-of-the-box and saves from having to implement a full-blown LDR subsystem among other things. However, it doesn't simply call `LoadLibrary` but rather the `Ex` variant with a special flag(due to stability issues).
+The author of Cobalt Strike decided to go for the former option because it's a sensible choice, operationally-reliable, avoids a missing PEB loaded image IoC out-of-the-box and saves from having to implement a full-blown LDR subsystem among other things. However, it doesn't simply call `LoadLibrary` but rather the `Ex` variant with a special flag(due to stability issues).
 
 So how exactly does it accomplish this? (in case you haven't already figured it out)
 ```
